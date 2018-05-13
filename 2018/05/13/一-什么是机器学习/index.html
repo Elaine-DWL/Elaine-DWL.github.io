@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="课程简介 what 什么是机器学习？ when 什么时候使用机器学习？ why  为什么可以使用机器学习？ how  机器学习是如何学的？ how  怎样优化机器学习？  是什么学习我们看书，通过阅读，可以学会知识；小朋友学说话、走路都是一种学习的过程。所以我们通常说的学习是一种获取技能的过程，通过对观察不断地积累，从而获得技能经验。 observations $\longrightarrow$">
+<meta name="keywords" content="机器学习,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(一)什么是机器学习">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/一-什么是机器学习/index.html">
+<meta property="og:site_name" content="DWL要天天向上">
+<meta property="og:description" content="课程简介 what 什么是机器学习？ when 什么时候使用机器学习？ why  为什么可以使用机器学习？ how  机器学习是如何学的？ how  怎样优化机器学习？  是什么学习我们看书，通过阅读，可以学会知识；小朋友学说话、走路都是一种学习的过程。所以我们通常说的学习是一种获取技能的过程，通过对观察不断地积累，从而获得技能经验。 observations $\longrightarrow$">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-13T09:04:17.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(一)什么是机器学习">
+<meta name="twitter:description" content="课程简介 what 什么是机器学习？ when 什么时候使用机器学习？ why  为什么可以使用机器学习？ how  机器学习是如何学的？ how  怎样优化机器学习？  是什么学习我们看书，通过阅读，可以学会知识；小朋友学说话、走路都是一种学习的过程。所以我们通常说的学习是一种获取技能的过程，通过对观察不断地积累，从而获得技能经验。 observations $\longrightarrow$">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/一-什么是机器学习/"/>
+
+
+
+
+
+  <title>(一)什么是机器学习 | DWL要天天向上</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DWL要天天向上</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/一-什么是机器学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine_DWL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DWL要天天向上">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(一)什么是机器学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T16:33:28+08:00">
+                2018-05-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-13T17:04:17+08:00">
+                2018-05-13
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="课程简介"><a href="#课程简介" class="headerlink" title="课程简介"></a>课程简介</h1><ul>
+<li><strong>what</strong> 什么是机器学习？</li>
+<li><strong>when</strong> 什么时候使用机器学习？</li>
+<li><strong>why</strong>  为什么可以使用机器学习？</li>
+<li><strong>how</strong>  机器学习是如何学的？</li>
+<li><strong>how</strong>  怎样优化机器学习？</li>
+</ul>
+<h1 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h1><p><strong>学习</strong><br>我们看书，通过阅读，可以学会知识；小朋友学说话、走路都是一种学习的过程。所以我们通常说的学习是一种获取技能的过程，通过对观察不断地积累，从而获得技能经验。</p>
+<p><strong>observations $\longrightarrow$ learning  $\longrightarrow$ skill</strong></p>
+<p><strong>机器学习</strong><br>简单地说，机器学习就是我们希望用计算机来模拟人学习的过程。通过喂给计算机数据，让计算机学得技能，得到某一种表现的增进。</p>
+<p><strong>data $\longrightarrow$ ML $\longrightarrow$ imporoved/performance/measure</strong></p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>人可以很简单地辨认出图片里的一棵树，那要如何教计算机去辨认呢？是直接写100条规则作为辨识程序吗？这似乎有点难。我们知道，一个三岁小孩认识树，是通过不断的观察来学会的，而并不是套用100条规则。机器学习想要做的事也一样，通过学习来辨认。</p>
+<ul>
+<li>卫星导航</li>
+<li>视觉/语言辨认</li>
+<li>high-frequency trading(例如股票交易需要很快做出决定)</li>
+<li><p>针对消费者的营销<br>也就是说，要<strong>授计算机以渔</strong></p>
+<h1 id="三个关键点"><a href="#三个关键点" class="headerlink" title="三个关键点"></a>三个关键点</h1></li>
+<li><p><strong>模式</strong><br>既然有某种表现要被增进，所以应该存在一些隐藏的模式可以被学习</p>
+</li>
+<li><p><strong>规则</strong><br>有清楚的规则</p>
+</li>
+<li><p><strong>数据</strong><br>是机器学习的输入</p>
+</li>
+</ul>
+<h1 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h1><p>以一个银行问题为例子，申请信用卡人数众多，根据申请者信息(包括年龄、性别、年薪、居住实践、工作时间、负债金额)可以使用机器学习来判断该给哪些人派发信用卡。</p>
+<blockquote>
+<p><strong>输入：</strong><br>$x \in X$（申请者）<br><strong>输出：</strong><br>$y \in Y$（是否应该给他提供信用卡）<br><strong>待学习的模式，即映射函数：</strong><br>$f: x \longrightarrow y$  （理想的信用卡提供函数）<br><strong>数据，即训练用例：  </strong><br>$D = {(x_1, y_1), (x_2, y_2), …, (x_n, y_n)}$（银行拥有的历史数据）<br><strong>假设，也就是学习到的技能：</strong><br>$g: x \longrightarrow y$ （通过学习得到的映射函数，用来对新的数据进行决策和判断）</p>
+</blockquote>
+<p>​                                                        ${(x_n, y_n)}  from f \longrightarrow ML \longrightarrow g $</p>
+<p>存在很多的$Hypothesis$，我们的目标就是从这些$H$中，找到最接近$f$的$g$。</p>
+<h1 id="和其它领域的关系"><a href="#和其它领域的关系" class="headerlink" title="和其它领域的关系"></a>和其它领域的关系</h1><h2 id="机器学习-vs-数据挖掘"><a href="#机器学习-vs-数据挖掘" class="headerlink" title="机器学习 vs 数据挖掘"></a>机器学习 vs 数据挖掘</h2><ul>
+<li><strong>机器学习</strong></li>
+</ul>
+<p>用训练数据来计算最接近$f$的假设函数$g$</p>
+<ul>
+<li><strong>数据挖掘</strong></li>
+</ul>
+<p>从很多的数据中来寻找感兴趣的特征和属性</p>
+<ul>
+<li><strong>关系</strong></li>
+</ul>
+<p>如果 <u>感兴趣的属性</u> 就是 假设函数$g$, 那么可以把<strong>机器学习等同于数据挖掘</strong>;  </p>
+<p>如果 <u>感兴趣的属性</u> 和 假设函数$g$有关, 那么<strong>数据挖掘可以为机器学习服务</strong>;</p>
+<p>机器学习也可以作为数据挖掘的一种<strong>工具</strong> 。</p>
+<p>在实际使用中，很难区分机器学习和数据挖掘。</p>
+<h2 id="机器学习-vs-人工智能"><a href="#机器学习-vs-人工智能" class="headerlink" title="机器学习 vs 人工智能"></a>机器学习 vs 人工智能</h2><ul>
+<li><strong>机器学习</strong></li>
+</ul>
+<p>用训练数据来计算最接近$f$的假设函数$g$</p>
+<ul>
+<li><strong>人工智能</strong></li>
+</ul>
+<p>计算一些能展现智力的习惯</p>
+<ul>
+<li><strong>关系</strong></li>
+</ul>
+<p>当$g \approx f$时，就体现了一种智能，说明<strong>机器学习可以实现人工智能</strong>；</p>
+<p>计算机下围棋的例子。<br>传统的人工智能：用tree实现。<br>机器学习实现的人工智能：通过从大量数据进行学习来实现。</p>
+<p><strong>机器学习是一种实现人工智能的方法</strong></p>
+<h2 id="机器学习-vs-统计学"><a href="#机器学习-vs-统计学" class="headerlink" title="机器学习 vs 统计学"></a>机器学习 vs 统计学</h2><ul>
+<li><strong>机器学习</strong></li>
+</ul>
+<p>用训练数据来计算最接近$f$的假设函数$g$</p>
+<ul>
+<li><strong>统计学</strong></li>
+</ul>
+<p>用数据对不确定的过程做一个推断</p>
+<ul>
+<li><strong>关系</strong></li>
+</ul>
+<p>(1) $g$是对结果的一种推断；$f$是不确定的。<br>所以我们可以认为<strong>统计学可以用来实现机器学习</strong>。</p>
+<p>(2) 传统的统计学关注数学假设的结果，并不关心计算。</p>
+<p>所以说，<strong>统计学为机器学习提供工具</strong>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/12/林轩田-《机器学习基石》笔记汇总-更新中/" rel="next" title="林轩田-《机器学习基石》笔记汇总(更新中)">
+                <i class="fa fa-chevron-left"></i> 林轩田-《机器学习基石》笔记汇总(更新中)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/img.jpg"
+                alt="Elaine_DWL" />
+            
+              <p class="site-author-name" itemprop="name">Elaine_DWL</p>
+              <p class="site-description motion-element" itemprop="description">life and code</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Elaine-DWL" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wl_dai@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cnblogs.com/Elaine-DWL/" title="My cnblog" target="_blank">My cnblog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#课程简介"><span class="nav-number">1.</span> <span class="nav-text">课程简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#是什么"><span class="nav-number">2.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三个关键点"><span class="nav-number">4.</span> <span class="nav-text">三个关键点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本组成"><span class="nav-number">5.</span> <span class="nav-text">基本组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#和其它领域的关系"><span class="nav-number">6.</span> <span class="nav-text">和其它领域的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习-vs-数据挖掘"><span class="nav-number">6.1.</span> <span class="nav-text">机器学习 vs 数据挖掘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习-vs-人工智能"><span class="nav-number">6.2.</span> <span class="nav-text">机器学习 vs 人工智能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习-vs-统计学"><span class="nav-number">6.3.</span> <span class="nav-text">机器学习 vs 统计学</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DWL</span>
+
+  
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
