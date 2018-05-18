@@ -12,9 +12,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    {% if theme.post_wordcount.item_text %}
-      <span class="post-meta-item-text">{{ __('post.totalcount') }}&#58;</span>
-    {% endif %}
+	<span class="post-count">全站字数:</span>
     <span title="{{ __('post.totalcount') }}">{#
     #}{{ totalcount(site, '0,0.0a') }}{#
   #}</span>
@@ -42,4 +40,25 @@
   <div class="footer-custom">{#
   #}{{ theme.footer.custom_text }}{#
 #}</div>
+{% endif %}
+{% if theme.busuanzi_count.enable %}
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  {% if theme.busuanzi_count.site_uv %}
+    <span class="site-uv">
+      {{ theme.busuanzi_count.site_uv_header }}
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      {{ theme.busuanzi_count.site_uv_footer }}
+    </span>
+  {% endif %}
+
+  {% if theme.busuanzi_count.site_pv %}
+    <span class="site-pv">
+      {{ theme.busuanzi_count.site_pv_header }}
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      {{ theme.busuanzi_count.site_pv_footer }}
+    </span>
+  {% endif %}
+</div>
 {% endif %}
