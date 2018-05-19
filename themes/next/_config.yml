@@ -251,7 +251,7 @@ wechatpay: /images/wechatpay.png
 alipay: /images/alipay.png
 #bitcoin: /images/bitcoin.png
 
-# Declare license on posts
+# Declare license on posts 博客最后的文章版权信息
 post_copyright:
   enable: true
   license: CC BY-NC-SA 3.0
@@ -382,13 +382,13 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
-  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
-  verify: false # Verification code
-  placeholder: Just go go # comment box placeholder
-  avatar: mm # gravatar style
+  enable: true
+  appid:  20Le4t2w35dHd39WQOWGHDTs-gzGzoHsz
+  appkey:  O6HEVqhgM1mk1AawY26UXODB
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: true # Verification code
+  placeholder: 说点什么吧(ps:留下邮箱可以收到回复提示哦)... 
+  avatar: retro # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
 
