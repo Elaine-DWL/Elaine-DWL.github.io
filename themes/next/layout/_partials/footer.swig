@@ -37,10 +37,11 @@
 {% endif %}
 
 {% if theme.footer.custom_text %}
-  <div class="footer-custom">{#
-  #}{{ theme.footer.custom_text }}{#
-#}</div>
+  <span class="post-meta-divider">|</span>
+  {{ theme.footer.custom_text }}
 {% endif %}
+
+
 {% if theme.busuanzi_count.enable %}
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

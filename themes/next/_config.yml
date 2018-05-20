@@ -63,7 +63,7 @@ footer:
     version: 
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  custom_text: 
+  custom_text: <span>Hosted by <a target="_blank" href="https://pages.coding.me">Coding Pages</a><span>
   # Hosted by <a target="_blank" href="https://Elaine-DWL.github.com">GitHub Pages</a>
 
 # ---------------------------------------------------------------
@@ -188,7 +188,7 @@ sidebar:
   #  - remove  Totally remove sidebar including sidebar toggle.
   # display: post
   #display: always
-  display: hide
+  display: post
   #display: remove
 
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
@@ -236,7 +236,7 @@ post_wordcount:
   item_text: true
   wordcount: true
   min2read: true
-  totalcount: true
+  totalcount: false
   separated_meta: true
 
 # Wechat Subscriber
