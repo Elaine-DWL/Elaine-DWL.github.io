@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://xxxxxxx.xxx"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="回顾上一章中讲到了一些机器学习的基本概念，通过介绍银行信用卡派发系统，我们大致了解了机器学习的过程。如下图所示，根据银行现有的数据集$D = {(x_1, y_1), (x_2, y_2), …, (x_n, y_n)}$，其中$x_n$是一个向量，表示第$n$个申请人的信息，$y_n$是一个二值(是/否)变量，表示是否给该人派发信用卡。我们认为，$f$是理论上正确的，可准确描述$x\longri">
+<meta name="keywords" content="机器学习,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《机器学习基石》笔记二">
+<meta property="og:url" content="http://daiwenli.top/2018/05/16/《机器学习基石》笔记二/index.html">
+<meta property="og:site_name" content="DWL要天天向上">
+<meta property="og:description" content="回顾上一章中讲到了一些机器学习的基本概念，通过介绍银行信用卡派发系统，我们大致了解了机器学习的过程。如下图所示，根据银行现有的数据集$D = {(x_1, y_1), (x_2, y_2), …, (x_n, y_n)}$，其中$x_n$是一个向量，表示第$n$个申请人的信息，$y_n$是一个二值(是/否)变量，表示是否给该人派发信用卡。我们认为，$f$是理论上正确的，可准确描述$x\longri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180515115344.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180515134337.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180515141925.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180515150502.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180515152628.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180521122438.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180521124616.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180521140128.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180521141732.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524123014.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524122448.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524144208.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524144329.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524160044.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524171429.png">
+<meta property="og:image" content="http://daiwenli.top/images/TIM截图20180524173637.png">
+<meta property="og:updated_time" content="2019-07-09T07:14:10.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《机器学习基石》笔记二">
+<meta name="twitter:description" content="回顾上一章中讲到了一些机器学习的基本概念，通过介绍银行信用卡派发系统，我们大致了解了机器学习的过程。如下图所示，根据银行现有的数据集$D = {(x_1, y_1), (x_2, y_2), …, (x_n, y_n)}$，其中$x_n$是一个向量，表示第$n$个申请人的信息，$y_n$是一个二值(是/否)变量，表示是否给该人派发信用卡。我们认为，$f$是理论上正确的，可准确描述$x\longri">
+<meta name="twitter:image" content="http://daiwenli.top/images/TIM截图20180515115344.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://daiwenli.top/2018/05/16/《机器学习基石》笔记二/">
+
+
+
+
+
+  <title>《机器学习基石》笔记二 | DWL要天天向上</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DWL要天天向上</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://daiwenli.top/2018/05/16/《机器学习基石》笔记二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine_DWL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DWL要天天向上">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《机器学习基石》笔记二</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T21:51:53+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:14:10+08:00">
+                2019-07-09
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/16/《机器学习基石》笔记二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/16/《机器学习基石》笔记二/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/16/《机器学习基石》笔记二/" class="leancloud_visitors" data-flag-title="《机器学习基石》笔记二">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,968 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p>上一章中讲到了一些机器学习的基本概念，通过介绍银行信用卡派发系统，我们大致了解了机器学习的过程。如下图所示，根据银行现有的数据集$D = {(x_1, y_1), (x_2, y_2), …, (x_n, y_n)}$，其中$x_n$是一个向量，表示第$n$个申请人的信息，$y_n$是一个二值(是/否)变量，表示是否给该人派发信用卡。我们认为，$f$是理论上正确的，可准确描述$x\longrightarrow y$这个过程的函数。</p>
+<p><img src="/images/TIM截图20180515115344.png" alt></p>
+<p>从图中我们可以看出用机器学习来决策是否给某位新用户$x$派发信用卡的过程为：</p>
+<blockquote>
+<p><strong>取已有的数据集作为训练集，运用算法$A$，从所有的假设函数中，选出性能最好的、最接近$f$的决策函数$g$</strong></p>
+</blockquote>
+<p>那么，假设函数$h$又是什么呢？我们该如何选择？</p>
+<h1 id="PLA-perceptron-learning-algorithm"><a href="#PLA-perceptron-learning-algorithm" class="headerlink" title="PLA(perceptron learning algorithm)"></a>PLA(perceptron learning algorithm)</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img src="/images/TIM截图20180515134337.png" alt></p>
+<p>在信用卡派发问题中，我们认为顾客各项特征的重要性是不等的，所以给每项特征值赋予不同的权重，将特征加权求和结果作为得分score。选定一个阈值，当score大于这个阈值时，建议给该人派发信用卡，否则拒绝申请。</p>
+<p>所以，我们的假设函数可以写成：</p>
+<blockquote>
+<p>$h(x) = sign((\sum_{i=1}^dw_ix_i)-threshold)$</p>
+</blockquote>
+<p>上式可进行如下转化。通过添加一个$x_0=+1$，将threshold作为其权重$w_0$，$h(x)$可写成下面的形式：</p>
+<p><img src="/images/TIM截图20180515141925.png" alt></p>
+<p>所以，$H$是一个函数集，不同的$w_0, w_1, … ,w_n$的组合确定了不同的假设函数$h(x)$。</p>
+<p>对于一个新的需要决策的输入数据$x$，将其代入假设函数，得到的结果即为该感知器的决策。</p>
+<p>下面我们来直观的理解一下$h(x)$。</p>
+<p>我们可以想象每个$x$在平面内都有一个对应的位置，由于$y$值有两种，所以分别用‘x’和’o’分别标记这两类$x$。当$x=(x_1, x_2)$，是一个二维向量的时候，$h(x) = sign(w_0 + w_1x_1 + w_2x_2)$。这时，$h(x)$可以看成平面上的一条直线，这条直线可以将平面分成两部分，同理这些点也分成了两部分。</p>
+<p>$h(x)$的目的就是要尽可能将’x’和’o’这两类点放在直线的两侧。下图中，我们可以看出，右边的直线比左边的更能y有效区分这些点。</p>
+<p><img src="/images/TIM截图20180515150502.png" alt></p>
+<p>所以，当使用某个$h(x)$来进行决策的时候，只需要看看输入数据在直线的哪一侧即可。</p>
+<p>当$x$是三维的话，相当于在空间中找一个平面来划分点。同理，可以推广到多维空间。</p>
+<p><img src="/images/TIM截图20180515152628.png" alt></p>
+<p>所以，感知器可以看成是一种线性分类。</p>
+<h2 id="从-H-中选取-g"><a href="#从-H-中选取-g" class="headerlink" title="从$H$中选取$g$"></a>从$H$中选取$g$</h2><blockquote>
+<p>机器学习的目的是想要尽可能得到接近$f$的$g$，但是$f$是未知的，所以该如何确定$g$呢？<br>答：<strong>从初始值$g_0$开始，在数据集$D$上不断纠正、优化$g_0$</strong></p>
+</blockquote>
+<p>因为不同的$w$对应不同的$h(x)$，我们用权重向量$w_0$代表$g_0$。</p>
+<p><img src="/images/TIM截图20180521122438.png" alt></p>
+<p>对于$w<em>t$，若发现在$(x</em>{n(t)}, y<em>{n(t)})$处预测结果有错，即         $$sign(w^T_tx</em>{n(t)})\neq y_{n(t)}$$</p>
+<p>可以把上式中$sign(w^T<em>tx</em>{n(t)})$看成是两个向量的内积，即$sign(w^T<em>tx</em>{n(t)})=|w<em>t^T||x</em>{n(t)}|cos\theta$，所以我们<strong>将问题转化为判断向量夹角的预测是否正确</strong>。</p>
+<p>那么$sign(w^T<em>tx</em>{n(t)})&gt;0$表示预测结果两个向量的夹角为锐角，小于0表示预测结果夹角是钝角</p>
+<ul>
+<li>情况1. 实际结果(y=+1)为锐角，预测结果(-1)为钝角</li>
+</ul>
+<p><img src="/images/TIM截图20180521124616.png" alt></p>
+<p>上图中，红色线条标记的$w$是预测值，黑色线条标记的$x$是输入数据，紫色线条标记的是纠正后的结果</p>
+<p>纠正方法是：$w<em>{t+1}\longleftarrow w_t+x</em>{n(t)}$</p>
+<ul>
+<li>情况2. 实际结果(y=-1)为钝角，预测结果(+1)为锐角</li>
+</ul>
+<p><img src="/images/TIM截图20180521140128.png" alt></p>
+<p>上图中，红色线条标记的$w$是预测值，黑色线条标记的$x$是输入数据，紫色线条标记的是纠正后的结果</p>
+<p>纠正方法是：$w<em>{t+1}\longleftarrow w_t-x</em>{n(t)}$</p>
+<blockquote>
+<p>综上：$w<em>{t+1}\longleftarrow w_t+y</em>{n(t)}x_{n(t)}$</p>
+</blockquote>
+<p>不断重复上述纠正，直到没有错误。</p>
+<blockquote>
+<p>我理解的算法流程是：</p>
+<p>对于一个初始选取的$w_0$，遍历所有数据判断是否预测正确.</p>
+<p>若某个数据数据预测不正确的话，用$w<em>{t+1}\longleftarrow w_t+y</em>{n(t)}x_{n(t)}$来更新$w$</p>
+</blockquote>
+<p><img src="/images/TIM截图20180521141732.png" alt></p>
+<h2 id="PLA终止条件"><a href="#PLA终止条件" class="headerlink" title="PLA终止条件"></a>PLA终止条件</h2><p>PLA只能用来解决<strong>线性可分</strong>问题。如下图所示。</p>
+<p><img src="/images/TIM截图20180524123014.png" alt></p>
+<p><strong>使用PLA来解决线性可分问题，PLA一定可以终止</strong>。</p>
+<p>下面给出证明。</p>
+<ul>
+<li>思路</li>
+</ul>
+<p>要证明PLA能终止，也就是证明PLA能得到正确解，也就是证明向量$w_f$和$w_t$尽可能重合（其中t表示经过t次错误纠正后），即它们得夹角尽可能小。所以，为了排除向量长度的影响，我们将向量归一化，可以观察$\frac{w_f}{|w_f|}\cdot \frac{w_t}{|w_t|}$即夹角余弦值$cos\theta$的变化。</p>
+<ul>
+<li>证明</li>
+</ul>
+<p>数据集线性可分，也就是说一定存在$w_f$满足$y_n=sign(w_f^Tx_n)$，即<strong>$w_f$可对数据集进行完美预测</strong></p>
+<p>对于某个能正确预测得点$x<em>n$，它到线的距离是$y</em>{n(t)}w_f^Tx_n$，这个距离应该是大于0的，所以有：</p>
+<p><img src="/images/TIM截图20180524122448.png" alt></p>
+<p>上式中，$min_nw_f^Ty_nx_n​$即数据点到预测直线的最短距离。</p>
+<p>所以：</p>
+<p>$w<em>f^Tw_t=w_f^T(w</em>{t-1}+y<em>{n(t)}x</em>{n(t)})$</p>
+<p>$=w<em>f^Tw</em>{t-1}+w<em>f^Ty</em>{n(t)}x_{n(t)}$</p>
+<p>$\geq w<em>f^Tw</em>{t-1}+min_nw_f^Ty_nx_n$</p>
+<p>$\geq w<em>f^Tw</em>{t-2}+2*min_nw_f^Ty_nx_n$</p>
+<p>$\geq w_f^Tw_0+t*min_nw_f^Ty_nx_n$</p>
+<p>$\geq t*min_nw_f^Ty_nx_n$</p>
+<p>即  $w_f^Tw_t \geq t*min_nw_f^Ty_nx_n$   ——————(公式1)</p>
+<p>当需要进行错误纠正时，一定是预测和实际结果相反了，也就是：</p>
+<p><img src="/images/TIM截图20180524144208.png" alt></p>
+<p>所以：</p>
+<p><img src="/images/TIM截图20180524144329.png" alt></p>
+<p>$|w<em>t|^2 \leq |w</em>{t-1}|^2+max_n|x_n|^2 $</p>
+<p>​            $\leq |w_0|^2+t*max_n|x_n|^2$</p>
+<p>​            $\leq t*max_n|x_n|^2$   —————————(公式2)说明随着t增加，$w_t$的长度会慢慢增加</p>
+<p>根据公式1和公式2可以对$\frac{w_f}{|w_f|}\cdot \frac{w_t}{|w_t|}$（也就是两个单位向量的数量积）进行如下推导：</p>
+<p>$\frac{w_f}{|w_f|}\cdot \frac{w_t}{|w_t|} =1 \ast 1 \ast cos \theta$</p>
+<p>$\geq \frac{t * min_nw_f^Ty_nx_n}{|w_f||w_t|}$</p>
+<p>$\geq \frac{t*min_nw_f^Ty_nx_n}{|w_f|\sqrt t \ast max_n}$</p>
+<p>$\geq \frac {t * min_nw_f^Ty_nx_n} {|w_f| \sqrt{t} \ast max_n |x_n|}$</p>
+<p>$\geq\sqrt t * \frac{min_nw_f^Ty_nx_n}{|w_f| \ast max_n|x_n|}$</p>
+<p>上式中$\theta$是$w_f$和经t次纠正后得到的$w_t$的夹角。<br>所以最后可得：</p>
+<p><img src="/images/TIM截图20180524160044.png" alt></p>
+<p><strong>随着纠正次数t得增加，夹角越来越小，说明对于线性可分问题PLA算法一定可以终止且能得到正确解。</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>优点</li>
+</ul>
+<p>容易实现；代码简单；任意维度的线性可分问题都能使用。</p>
+<ul>
+<li>缺点</li>
+</ul>
+<p>首先得假设数据集D是线性可分的；</p>
+<p>$w_f$未知，所以并不确定算法什么时候终止</p>
+<h1 id="Pocket-algorithm"><a href="#Pocket-algorithm" class="headerlink" title="Pocket algorithm"></a>Pocket algorithm</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>现实中，并不是所有的问题都是线性可分的。数据是可能有噪声、误差影响的，这也会对线性可分问题造成干扰。</p>
+<p>如何在有噪声的数据里找一条好的线呢？</p>
+<p>我们假设噪声很小（当然噪声很大的话，这个问题也就没有处理的意义了），虽然没办法找到一条不犯错误的线，但是我们可以找一条犯错尽可能少的线。<br><img src="/images/TIM截图20180524171429.png" alt></p>
+<p>然而…这个问题是NP难的…….</p>
+<p>Pocket算法可用来求近似解。</p>
+<h2 id="Pocket-算法"><a href="#Pocket-算法" class="headerlink" title="Pocket 算法"></a>Pocket 算法</h2><p><img src="/images/TIM截图20180524173637.png" alt></p>
+<p>类似贪心算法。</p>
+<p>与PLA不同，Packet算法使用随机的方法来寻找错误，并且记录当前最好的解，通过不断更新这个最优解的取值。Packet算法没有明确的终止条件条件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Elaine_DWL 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Elaine_DWL 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Elaine_DWL
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://daiwenli.top/2018/05/16/《机器学习基石》笔记二/" title="《机器学习基石》笔记二">http://daiwenli.top/2018/05/16/《机器学习基石》笔记二/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FF8888;font-size:14px;">-------------本文结束啦~给你小心心♥ ♥ ♥-------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/13/《机器学习基石》笔记一/" rel="next" title="《机器学习基石》笔记一">
+                <i class="fa fa-chevron-left"></i> 《机器学习基石》笔记一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/20/那些年搭博客踩过的坑/" rel="prev" title="那些年搭博客踩过的坑">
+                那些年搭博客踩过的坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/img.jpg" alt="Elaine_DWL">
+            
+              <p class="site-author-name" itemprop="name">Elaine_DWL</p>
+              <p class="site-description motion-element" itemprop="description">life and code</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Elaine-DWL" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wl_dai@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cnblogs.com/Elaine-DWL/" title="My cnblog" target="_blank">My cnblog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#回顾"><span class="nav-number">1.</span> <span class="nav-text">回顾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PLA-perceptron-learning-algorithm"><span class="nav-number">2.</span> <span class="nav-text">PLA(perceptron learning algorithm)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从-H-中选取-g"><span class="nav-number">2.2.</span> <span class="nav-text">从$H$中选取$g$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PLA终止条件"><span class="nav-number">2.3.</span> <span class="nav-text">PLA终止条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pocket-algorithm"><span class="nav-number">3.</span> <span class="nav-text">Pocket algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">3.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pocket-算法"><span class="nav-number">3.2.</span> <span class="nav-text">Pocket 算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DWL</span>
+
+  
+
+
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+  <span>Hosted by <a target="_blank" href="https://pages.coding.me">Coding Pages</a><span>
+
+
+
+
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+
+
+
+
+
+
+        
+      </span></span></div>
+    </div></footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '20Le4t2w35dHd39WQOWGHDTs-gzGzoHsz',
+        appKey: 'O6HEVqhgM1mk1AawY26UXODB',
+        placeholder: '说点什么吧(ps:留下邮箱可以收到回复提示哦)...',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("20Le4t2w35dHd39WQOWGHDTs-gzGzoHsz", "O6HEVqhgM1mk1AawY26UXODB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
