@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://daiwenli.top/images/深度学习之CNN_6.png">
 <meta property="og:image" content="http://daiwenli.top/images/深度学习之CNN_7.png">
 <meta property="og:image" content="http://daiwenli.top/images/深度学习之CNN_8.png">
-<meta property="og:updated_time" content="2019-07-09T09:08:08.101Z">
+<meta property="og:updated_time" content="2019-07-09T09:32:13.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习之CNN基础（1）">
 <meta name="twitter:description" content="深度学习之CNN基础本文主要是对CS231N课程中有关CNN的各种层进行一个总结，截图来自课程或CS231N网易云课堂的视频。 卷积层卷积层是CNN中最基础的层，在DNN中，我们是考虑对数据的线性变换，而这里，CNN则考虑的是对图像（张量数据）的线性变换，DNN中并没有考虑空间信息，而CNN中的卷积操作，更好地来处理图像的这种空间性。 什么是卷积核？卷积层涉及到的主要是用卷积核对图像进行卷积处理，">
@@ -362,12 +362,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T17:08:08+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T17:32:13+08:00">
                 2019-07-09
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -411,7 +433,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,153 字
+                  2,151 字
                 </span>
               
 
@@ -498,16 +520,15 @@
 <p><code>也就是说， 在test的时候，BN用的是固定的mean和var, 而这个固定的mean和var是通过训练过程中对mean和var进行移动平均得到的，被称之为moving_mean和moving_var。
 在实际操作中，每次训练时应当更新一下moving_mean和moving_var，然后把BN层的这些参数保存下来，留作测试和预测时使用。</code></p>
 <ul>
-<li><strong>BN层的作用？</strong></li>
-</ul>
-<ol>
+<li><p><strong>BN层的作用？</strong></p>
+<ul>
 <li>加快收敛速度</li>
-</ol>
+<li>防止过拟合（没有dropout/l1/l2正则那么效果明显）</li>
+</ul>
+</li>
+</ul>
 <p><img src="\images\深度学习之CNN_8.png" alt="深度学习之CNN_8.png"></p>
 <p>如果每一批次的数据分布不相同，那么网络就要在每次迭代的时候都去适应不同的分布，这样会大大降低网络的训练速度<br>另一方面，均值为0方差为1的情况下，在梯度计算时会产生比较大的梯度值，可以加快参数的训练，更直观的来说，是把数据从饱和区拉到了非饱和区。更进一步这也可以很好地控制梯度爆炸和梯度消失现象。</p>
-<ol>
-<li>防止过拟合（没有dropout/l1/l2正则那么效果明显）</li>
-</ol>
 <p>在训练的时候，BN的使用使得一个mini-batch的所有样本都被关联在一起，因此网络不会从某一个训练样本中生成确定的结果。<br>也就是说，同样一个样本的输出不再仅仅取决于样本本身，也取决于和这个样本同属于一个mini-batch的其它样本。</p>
 <h2 id="Dropout层"><a href="#Dropout层" class="headerlink" title="Dropout层"></a>Dropout层</h2><h3 id="什么是Dropout"><a href="#什么是Dropout" class="headerlink" title="什么是Dropout"></a>什么是Dropout</h3><pre><code>【训练阶段】在前向传播的时候，让某个神经元的激活值以一定的概率P停止工作。
 【测试阶段】每一个神经元的参数都要乘以概率p。
@@ -702,7 +723,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
