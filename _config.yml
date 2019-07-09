@@ -94,6 +94,6 @@ deploy:
   type: git
   repository:
         - git@github.com:Elaine-DWL/Elaine-DWL.github.io.git
-        - git@git.coding.net:elaine_dwl/elaine_dwl.coding.me.git
+        # - git@git.coding.net:elaine_dwl/elaine_dwl.coding.me.git
   branch: master
 
