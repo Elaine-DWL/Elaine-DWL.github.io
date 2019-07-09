@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="深度学习,">
 
 
 
@@ -92,16 +92,27 @@
 
 
 
-<meta name="description" content="life and code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DWL要天天向上">
-<meta property="og:url" content="http://daiwenli.top/archives/2019/04/index.html">
+<meta name="description" content="深度学习之CNN基础本文主要是对CS231N课程中有关CNN的各种层进行一个总结，截图来自课程或CS231N网易云课堂的视频。 卷积层卷积层是CNN中最基础的层，在DNN中，我们是考虑对数据的线性变换，而这里，CNN则考虑的是对图像（张量数据）的线性变换，DNN中并没有考虑空间信息，而CNN中的卷积操作，更好地来处理图像的这种空间性。 什么是卷积核？卷积层涉及到的主要是用卷积核对图像进行卷积处理，">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之CNN基础（1）">
+<meta property="og:url" content="http://daiwenli.top/2018/07/05/深度学习之CNN基础 (1)/index.html">
 <meta property="og:site_name" content="DWL要天天向上">
-<meta property="og:description" content="life and code">
+<meta property="og:description" content="深度学习之CNN基础本文主要是对CS231N课程中有关CNN的各种层进行一个总结，截图来自课程或CS231N网易云课堂的视频。 卷积层卷积层是CNN中最基础的层，在DNN中，我们是考虑对数据的线性变换，而这里，CNN则考虑的是对图像（张量数据）的线性变换，DNN中并没有考虑空间信息，而CNN中的卷积操作，更好地来处理图像的这种空间性。 什么是卷积核？卷积层涉及到的主要是用卷积核对图像进行卷积处理，">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_1.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_2.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_3.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_4.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_5.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_6.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_7.png">
+<meta property="og:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_8.png">
+<meta property="og:updated_time" content="2019-07-09T08:36:37.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DWL要天天向上">
-<meta name="twitter:description" content="life and code">
+<meta name="twitter:title" content="深度学习之CNN基础（1）">
+<meta name="twitter:description" content="深度学习之CNN基础本文主要是对CS231N课程中有关CNN的各种层进行一个总结，截图来自课程或CS231N网易云课堂的视频。 卷积层卷积层是CNN中最基础的层，在DNN中，我们是考虑对数据的线性变换，而这里，CNN则考虑的是对图像（张量数据）的线性变换，DNN中并没有考虑空间信息，而CNN中的卷积操作，更好地来处理图像的这种空间性。 什么是卷积核？卷积层涉及到的主要是用卷积核对图像进行卷积处理，">
+<meta name="twitter:image" content="http://daiwenli.top/2018/07/05/images/深度学习之CNN_1.png">
 
 
 
@@ -131,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://daiwenli.top/archives/2019/04/">
+  <link rel="canonical" href="http://daiwenli.top/2018/07/05/深度学习之CNN基础 (1)/">
 
 
 
 
 
-  <title>归档 | DWL要天天向上</title>
+  <title>深度学习之CNN基础（1） | DWL要天天向上</title>
   
 
 
@@ -156,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -292,72 +303,332 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 11 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://daiwenli.top/2018/07/05/深度学习之CNN基础 (1)/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Elaine_DWL">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DWL要天天向上">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/04/24/测试/" itemprop="url">
-              
-                <span itemprop="name">呵呵哒</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">深度学习之CNN基础（1）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-24T17:30:06+08:00" content="2019-04-24">
-          04-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-05T10:32:32+08:00">
+                2018-07-05
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T16:36:37+08:00">
+                2019-07-09
+              </time>
+            
+          </span>
 
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/05/深度学习之CNN基础 (1)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/05/深度学习之CNN基础 (1)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/05/深度学习之CNN基础 (1)/" class="leancloud_visitors" data-flag-title="深度学习之CNN基础（1）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,173 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="深度学习之CNN基础"><a href="#深度学习之CNN基础" class="headerlink" title="深度学习之CNN基础"></a>深度学习之CNN基础</h1><p>本文主要是对CS231N课程中有关CNN的各种层进行一个总结，截图来自课程或CS231N网易云课堂的视频。</p>
+<h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><p>卷积层是CNN中最基础的层，在DNN中，我们是考虑对数据的线性变换，而这里，CNN则考虑的是对图像（张量数据）的线性变换，DNN中并没有考虑空间信息，而CNN中的卷积操作，更好地来处理图像的这种空间性。</p>
+<h3 id="什么是卷积核？"><a href="#什么是卷积核？" class="headerlink" title="什么是卷积核？"></a>什么是卷积核？</h3><p>卷积层涉及到的主要是用<strong>卷积核</strong>对图像进行卷积处理，卷积核说白了，就是三维的矩阵，用这个三维矩阵在feature map 上进行滑窗处理。</p>
+<p>注意：用卷积核对图像（feature map）进行处理，输出的feature map的维度 和 卷积核的个数相等。比如说，用5*5*3（这里3是卷积核的数量）的卷积核对图像进行操作，输出的feature map 的维度一定是3.</p>
+<h3 id="卷积运算"><a href="#卷积运算" class="headerlink" title="卷积运算"></a>卷积运算</h3><p><img src="..\images\深度学习之CNN_1.png" alt="深度学习之CNN_1"></p>
+<p>如上图所示，图像大小是（32*32*3），用大小为（5*5*5）的卷积核处理，得到（28*28*5）的输出。</p>
+<p><img src="..\images\深度学习之CNN_2.png" alt="深度学习之CNN_2"></p>
+<p>由上图可以知道，卷积输出的深度(激活映射的层数)和卷积核的个数相等。<br>每个卷积核都要在输入的整个深度上做卷积。</p>
+<p>用一个有5*5*3个参数值的滤波器，然后以相同的方式滑动(卷积核)，划过整个的输入部分，从而得到一张激活映射(activation map).</p>
+<p><img src="..\images\深度学习之CNN_3.png" alt="无padding操作时的卷积计算"></p>
+<p>这里，b是bias，这里的w是指将卷积核展开得到的一个一维向量。所以说，卷积操作本质还是一种线性变换。每一个卷积核会产生一个activation map，就是说生成的激活映射的层数和卷积核的个数 一样。</p>
+<p>那么，我们知道，卷积操作的输出维度和卷积核的个数相等，但是，如何来确定生成的feature map的长宽呢？</p>
+<p><img src="..\images\深度学习之CNN_4.png" alt="深度学习之CNN_4"></p>
+<ul>
+<li>在无边缘填充的情况下，对一张输入大小为N*N的图像，使用大小为F*F的卷积核以步长为stride对它做卷积，输出图像的大小为  (N - F) / stride + 1(结果必须是整数，所以步长的选择必须适当)</li>
+<li>然而，在实际的操作中，一般会对待进行卷积操作的图像进行边缘填充（填充方法可以是常用的零填充或者是其它），所以此时在计算输出图像的大小尺寸时，仍然时使用的之前的公式：<br>(N - F) / stride + 1，但是N要进行更新，应该是填充后的大小。如下图所示：</li>
+</ul>
+<p><img src="..\images\深度学习之CNN_5.png" alt="有padding操作时的卷积计算"></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
+<li><p><strong>为什么要做零填充？</strong></p>
+<p>因为我们想尽可能地保持全尺寸输出。如果不做零填充或者其它任何形式的填充，那么输出图像的尺寸会迅速减小，这样是不好的，可能会损失很多的信息，最后只能用很少的值来表示原始图像。关于图像的边角信息也会损失的更多。</p>
+</li>
+</ul>
+<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><ul>
+<li>池化层的作用：下采样。</li>
+<li>池化层的参数：<strong>没有需要学习的参数</strong>。需要设置池化的步长。</li>
+<li>池化层的类型：最大池化、平均池化等。</li>
+</ul>
+<p><img src="..\images\深度学习之CNN_6.png" alt="深度学习之CNN_6.png"></p>
+<h2 id="BN层"><a href="#BN层" class="headerlink" title="BN层"></a>BN层</h2><p>BN层的全称是Batch Normalization(批归一化层)，这里的batch，顾名思义，指的是我们mini-batch SGD中的 batch。</p>
+<h3 id="BN层操作"><a href="#BN层操作" class="headerlink" title="BN层操作"></a>BN层操作</h3><p>首先是计算出mini-batch中各个特征的均值和方差，然后对mini-batch中的每个特征x_i 进行标准化处理，最后利用缩放参数$\gamma$和偏移参数$\ \beta$对特征$x^i$进一步处理后，来代替最初的输入特征值。也就是说对于每个神经元都会有一对参数值(（γ和β）通过训练来学习。</p>
+<p><img src="..\images\深度学习之CNN_7.png" alt="深度学习之CNN_7.png"></p>
+<h3 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a>思考</h3><ul>
+<li><strong>BN层对数据进行了归一化之后，为什么还要使用缩放参数和偏移参数进一步处理？</strong></li>
+</ul>
+<p>某些情况下非标准化分布的层特征可能是最优的，标准化每一层的输出特征反而会使得网络的表达能力变得不好，作者为BN层加上了2个科学系的缩放参数$ \gamma$和$ \beta$来允许模型自适应地去调整层特征分布。</p>
+<ul>
+<li><strong>BN层训练和测试的区别</strong></li>
+</ul>
+<p>可能学完了上面的算法，你只是知道它的一个训练过程，<strong>一个网络一旦训练完了，就没有了min-batch</strong>这个概念了。测试阶段我们一般只输入一个测试样本，看看结果而已。</p>
+<p>因此<strong>测试样本前向传导的时候，上面的均值u、标准差σ 要哪里来？</strong>其实网络一旦训练完毕，参数都是固定的，这个时候即使是每批训练样本进入网络，那么BN层计算的均值$ \mu$、和标准差$ \sigma$都是固定不变的。我们可以采用这些训练阶段的均值$ \mu$、和标准差$ \sigma$来作为测试样本所需要的均值、标准差，于是最后测试阶段的$ \mu $和$ \sigma$ 计算公式如下：</p>
+<p>$\begin{aligned} \mathrm{E}[x] &amp; \leftarrow \mathrm{E}<em>{\mathcal{B}}\left[\mu</em>{\mathcal{B}}\right] \ \operatorname{Var}[x] &amp; \leftarrow \frac{m}{m-1} \mathrm{E}<em>{\mathcal{B}}\left[\sigma</em>{\mathcal{B}}^{2}\right] \end{aligned}$</p>
+<p>上面简单理解就是：</p>
+<p>直接计算所有batch平均值作为$\mu$；</p>
+<p>采用每个batch的方差的平均值作为$\sigma$。</p>
+<p>最后测试阶段，BN的使用公式就是：$y=\frac{\gamma}{\sqrt{\operatorname{Var}[x]+\epsilon}} \cdot x+\left(\beta-\frac{\gamma \mathrm{E}[x]}{\sqrt{\operatorname{Var}[x]+\epsilon}}\right)$</p>
+<p><code>也就是说， 在test的时候，BN用的是固定的mean和var, 而这个固定的mean和var是通过训练过程中对mean和var进行移动平均得到的，被称之为moving_mean和moving_var。
+在实际操作中，每次训练时应当更新一下moving_mean和moving_var，然后把BN层的这些参数保存下来，留作测试和预测时使用。</code></p>
+<ul>
+<li><strong>BN层的作用？</strong></li>
+</ul>
+<ol>
+<li>加快收敛速度</li>
+</ol>
+<p><img src="..\images\深度学习之CNN_8.png" alt="深度学习之CNN_8.png"></p>
+<p>如果每一批次的数据分布不相同，那么网络就要在每次迭代的时候都去适应不同的分布，这样会大大降低网络的训练速度<br>另一方面，均值为0方差为1的情况下，在梯度计算时会产生比较大的梯度值，可以加快参数的训练，更直观的来说，是把数据从饱和区拉到了非饱和区。更进一步这也可以很好地控制梯度爆炸和梯度消失现象。</p>
+<ol>
+<li>防止过拟合（没有dropout/l1/l2正则那么效果明显）</li>
+</ol>
+<p>在训练的时候，BN的使用使得一个mini-batch的所有样本都被关联在一起，因此网络不会从某一个训练样本中生成确定的结果。<br>也就是说，同样一个样本的输出不再仅仅取决于样本本身，也取决于和这个样本同属于一个mini-batch的其它样本。</p>
+<h2 id="Dropout层"><a href="#Dropout层" class="headerlink" title="Dropout层"></a>Dropout层</h2><h3 id="什么是Dropout"><a href="#什么是Dropout" class="headerlink" title="什么是Dropout"></a>什么是Dropout</h3><pre><code>【训练阶段】在前向传播的时候，让某个神经元的激活值以一定的概率P停止工作。
+【测试阶段】每一个神经元的参数都要乘以概率p。
+</code></pre><h3 id="Dropout作用"><a href="#Dropout作用" class="headerlink" title="Dropout作用"></a>Dropout作用</h3><p>缓解过拟合，提高网络模型的泛化性</p>
+<h3 id="为什么Dropout可以缓解过拟合"><a href="#为什么Dropout可以缓解过拟合" class="headerlink" title="为什么Dropout可以缓解过拟合"></a>为什么Dropout可以缓解过拟合</h3><ul>
+<li>【bagging的角度】相当于取平均<br>dropout掉不同的隐藏神经元就类似在训练不同的网络，整个droupout过程就相当于对很多个不同的神经网络取平均，而不同的网络产生不同的过拟合，一些互为“反向”的过拟合相互抵消就可以达到整体上的减少过拟合。</li>
+<li>【正则的角度】减少神经元之间复杂的共适应关系<br>dropout会导致两个神经元不一定每次都出现，所以权值的更新也不再依赖于有固定关系的隐含结点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况。迫使网络取去学习更加鲁棒的特征。<br>换句话说，假如神经元在做某种预测，那么它不应该对一些特定的线索片段太敏感，即使丢失特定的线索，它也应该可以从众多其它线索中学习一些共同的模式（鲁棒性），这个角度看dropout有点像l1，l2正则，减少权重使得网络对丢失特定神经元连接的鲁棒性。</li>
+</ul>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Elaine_DWL 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Elaine_DWL 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Elaine_DWL
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://daiwenli.top/2018/07/05/深度学习之CNN基础 (1)/" title="深度学习之CNN基础（1）">http://daiwenli.top/2018/07/05/深度学习之CNN基础 (1)/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FF8888;font-size:14px;">-------------本文结束啦~给你小心心♥ ♥ ♥-------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/01/最大似然估计和EM算法/" rel="next" title="最大似然估计和EM算法">
+                <i class="fa fa-chevron-left"></i> 最大似然估计和EM算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -365,6 +636,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -385,8 +663,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -425,7 +712,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -478,6 +765,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深度学习之CNN基础"><span class="nav-number">1.</span> <span class="nav-text">深度学习之CNN基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层"><span class="nav-number">1.1.</span> <span class="nav-text">卷积层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是卷积核？"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是卷积核？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积运算"><span class="nav-number">1.1.2.</span> <span class="nav-text">卷积运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">1.1.3.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化层"><span class="nav-number">1.2.</span> <span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BN层"><span class="nav-number">1.3.</span> <span class="nav-text">BN层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BN层操作"><span class="nav-number">1.3.1.</span> <span class="nav-text">BN层操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dropout层"><span class="nav-number">1.4.</span> <span class="nav-text">Dropout层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Dropout"><span class="nav-number">1.4.1.</span> <span class="nav-text">什么是Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropout作用"><span class="nav-number">1.4.2.</span> <span class="nav-text">Dropout作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么Dropout可以缓解过拟合"><span class="nav-number">1.4.3.</span> <span class="nav-text">为什么Dropout可以缓解过拟合</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -635,6 +938,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://daiwenli.top/2019/04/24/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2019-07-09T07:27:34.892Z</lastmod>
+    <loc>http://daiwenli.top/2018/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8BCNN%E5%9F%BA%E7%A1%80%20(1)/</loc>
+    <lastmod>2019-07-09T08:36:37.010Z</lastmod>
     <data>
         <display>
-        <title>呵呵哒</title>
-        <pubTime>2019-04-24T09:30:06.000Z</pubTime>
+        <title>深度学习之CNN基础（1）</title>
+        <pubTime>2018-07-05T02:32:32.000Z</pubTime>
         
-        <tag>基础</tag>
+        <tag>深度学习</tag>
          
          
            
@@ -25,22 +25,19 @@
     
     
   <url>
-    <loc>http://daiwenli.top/2018/05/20/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%90%AD%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/</loc>
+    <loc>http://daiwenli.top/2018/05/12/%E6%9E%97%E8%BD%A9%E7%94%B0-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E3%80%8B%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB-%E6%9B%B4%E6%96%B0%E4%B8%AD/</loc>
     <lastmod>2019-07-09T07:14:10.848Z</lastmod>
     <data>
         <display>
-        <title>那些年搭博客踩过的坑</title>
-        <pubTime>2018-05-20T02:49:21.000Z</pubTime>
+        <title>林轩田-《机器学习基石》笔记汇总(更新中)</title>
+        <pubTime>2018-05-12T10:19:26.000Z</pubTime>
         
-        <tag>博客</tag>
+        <tag>机器学习</tag>
          
-        <tag>填坑</tag>
+        <tag>笔记</tag>
          
          
            
-             
-              <breadCrumb title="填坑" url="http://daiwenli.top/categories/%E5%A1%AB%E5%9D%91/"/>
-          
         </display>
     </data>
     </url>
@@ -67,12 +64,34 @@
 
     
   <url>
-    <loc>http://daiwenli.top/2018/05/12/%E6%9E%97%E8%BD%A9%E7%94%B0-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E3%80%8B%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB-%E6%9B%B4%E6%96%B0%E4%B8%AD/</loc>
+    <loc>http://daiwenli.top/2018/05/20/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%90%AD%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/</loc>
     <lastmod>2019-07-09T07:14:10.848Z</lastmod>
     <data>
         <display>
-        <title>林轩田-《机器学习基石》笔记汇总(更新中)</title>
-        <pubTime>2018-05-12T10:19:26.000Z</pubTime>
+        <title>那些年搭博客踩过的坑</title>
+        <pubTime>2018-05-20T02:49:21.000Z</pubTime>
+        
+        <tag>博客</tag>
+         
+        <tag>填坑</tag>
+         
+         
+           
+             
+              <breadCrumb title="填坑" url="http://daiwenli.top/categories/%E5%A1%AB%E5%9D%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://daiwenli.top/2018/05/16/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E3%80%8B%E7%AC%94%E8%AE%B0%E4%BA%8C/</loc>
+    <lastmod>2019-07-09T07:14:10.847Z</lastmod>
+    <data>
+        <display>
+        <title>《机器学习基石》笔记二</title>
+        <pubTime>2018-05-16T13:51:53.000Z</pubTime>
         
         <tag>机器学习</tag>
          
@@ -102,25 +121,6 @@
              
               <breadCrumb title="概念" url="http://daiwenli.top/categories/%E6%A6%82%E5%BF%B5/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://daiwenli.top/2018/05/16/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E3%80%8B%E7%AC%94%E8%AE%B0%E4%BA%8C/</loc>
-    <lastmod>2019-07-09T07:14:10.847Z</lastmod>
-    <data>
-        <display>
-        <title>《机器学习基石》笔记二</title>
-        <pubTime>2018-05-16T13:51:53.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-        <tag>笔记</tag>
-         
-         
-           
         </display>
     </data>
     </url>
