@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="title: 旋转数组中的查找系列date: 2018-08-03 12:20:32updated: 2018-08-03 12:20:32tags: [数学推导]categories: 深度学习mathjax: true DNN中的梯度消失/爆炸原因梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。  如上图所示，假设有2个隐">
+<meta name="description" content="title: DNN中的梯度消失/爆炸原因date: 2018-08-03 12:20:32updated: 2018-08-03 12:20:32tags: [数学推导]categories: 深度学习mathjax: true DNN中的梯度消失/爆炸原因梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。  如上图所示，假设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DWL的学习笔记">
-<meta property="og:url" content="http://daiwenli.top/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/index.html">
+<meta property="og:url" content="http://daiwenli.top/2019/07/24/DNN中的梯度消失爆炸原因/index.html">
 <meta property="og:site_name" content="DWL的学习笔记">
-<meta property="og:description" content="title: 旋转数组中的查找系列date: 2018-08-03 12:20:32updated: 2018-08-03 12:20:32tags: [数学推导]categories: 深度学习mathjax: true DNN中的梯度消失/爆炸原因梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。  如上图所示，假设有2个隐">
+<meta property="og:description" content="title: DNN中的梯度消失/爆炸原因date: 2018-08-03 12:20:32updated: 2018-08-03 12:20:32tags: [数学推导]categories: 深度学习mathjax: true DNN中的梯度消失/爆炸原因梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。  如上图所示，假设">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://daiwenli.top/2019/07/24/images/DNN等梯度消失之_1.png">
-<meta property="og:updated_time" content="2019-07-24T09:15:42.723Z">
+<meta property="og:updated_time" content="2019-07-24T09:22:34.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DWL的学习笔记">
-<meta name="twitter:description" content="title: 旋转数组中的查找系列date: 2018-08-03 12:20:32updated: 2018-08-03 12:20:32tags: [数学推导]categories: 深度学习mathjax: true DNN中的梯度消失/爆炸原因梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。  如上图所示，假设有2个隐">
+<meta name="twitter:description" content="title: DNN中的梯度消失/爆炸原因date: 2018-08-03 12:20:32updated: 2018-08-03 12:20:32tags: [数学推导]categories: 深度学习mathjax: true DNN中的梯度消失/爆炸原因梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。  如上图所示，假设">
 <meta name="twitter:image" content="http://daiwenli.top/2019/07/24/images/DNN等梯度消失之_1.png">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://daiwenli.top/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/">
+  <link rel="canonical" href="http://daiwenli.top/2019/07/24/DNN中的梯度消失爆炸原因/">
 
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://daiwenli.top/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/">
+    <link itemprop="mainEntityOfPage" href="http://daiwenli.top/2019/07/24/DNN中的梯度消失爆炸原因/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Elaine_DWL">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-24T17:15:42+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-24T17:22:34+08:00">
                 2019-07-24
               </time>
             
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/" itemprop="commentCount"></span>
+                <a href="/2019/07/24/DNN中的梯度消失爆炸原因/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/DNN中的梯度消失爆炸原因/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/" class="leancloud_visitors" data-flag-title>
+             <span id="/2019/07/24/DNN中的梯度消失爆炸原因/" class="leancloud_visitors" data-flag-title>
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  654 字
+                  655 字
                 </span>
               
 
@@ -440,7 +440,7 @@
       
 
       
-        <p>title: 旋转数组中的查找系列<br>date: 2018-08-03 12:20:32<br>updated: 2018-08-03 12:20:32<br>tags: [数学推导]<br>categories: 深度学习<br>mathjax: true</p>
+        <p>title: DNN中的梯度消失/爆炸原因<br>date: 2018-08-03 12:20:32<br>updated: 2018-08-03 12:20:32<br>tags: [数学推导]<br>categories: 深度学习<br>mathjax: true</p>
 <h2 id="DNN中的梯度消失-爆炸原因"><a href="#DNN中的梯度消失-爆炸原因" class="headerlink" title="DNN中的梯度消失/爆炸原因"></a>DNN中的梯度消失/爆炸原因</h2><p>梯度消失/梯度爆炸是深度学习中老生常谈的话题，这篇博客主要是对DNN中的梯度消失/梯度爆炸原因进行公式层面上的直观理解。</p>
 <p><img src="../images/DNN等梯度消失之_1.png" alt="1563957116984"></p>
 <p>如上图所示，假设有2个隐层，前向传播公式：</p>
@@ -506,7 +506,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://daiwenli.top/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/" title>http://daiwenli.top/2019/07/24/DNNRNNLSTM中的梯度消失梯度爆炸/</a>
+    <a href="http://daiwenli.top/2019/07/24/DNN中的梯度消失爆炸原因/" title>http://daiwenli.top/2019/07/24/DNN中的梯度消失爆炸原因/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
