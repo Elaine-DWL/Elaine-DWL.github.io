@@ -109,21 +109,19 @@
 
     
   <url>
-    <loc>http://daiwenli.top/2018/05/28/%E5%90%91%E9%87%8F%E8%8C%83%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E8%8C%83%E6%95%B0/</loc>
+    <loc>http://daiwenli.top/2018/06/01/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E5%92%8CEM%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2019-07-09T08:54:08.612Z</lastmod>
     <data>
         <display>
-        <title>向量范数和矩阵范数</title>
-        <pubTime>2018-05-28T08:49:50.000Z</pubTime>
+        <title>最大似然估计和EM算法</title>
+        <pubTime>2018-06-01T08:17:21.000Z</pubTime>
         
-        <tag>经常忘</tag>
-         
-        <tag>数学</tag>
+        <tag>算法，机器学习</tag>
          
          
            
              
-              <breadCrumb title="概念" url="http://daiwenli.top/categories/%E6%A6%82%E5%BF%B5/"/>
+              <breadCrumb title="机器学习" url="http://daiwenli.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
@@ -150,37 +148,22 @@
 
     
   <url>
-    <loc>http://daiwenli.top/2018/06/01/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E5%92%8CEM%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://daiwenli.top/2018/05/28/%E5%90%91%E9%87%8F%E8%8C%83%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E8%8C%83%E6%95%B0/</loc>
     <lastmod>2019-07-09T08:54:08.612Z</lastmod>
     <data>
         <display>
-        <title>最大似然估计和EM算法</title>
-        <pubTime>2018-06-01T08:17:21.000Z</pubTime>
+        <title>向量范数和矩阵范数</title>
+        <pubTime>2018-05-28T08:49:50.000Z</pubTime>
         
-        <tag>算法，机器学习</tag>
+        <tag>经常忘</tag>
+         
+        <tag>数学</tag>
          
          
            
              
-              <breadCrumb title="机器学习" url="http://daiwenli.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+              <breadCrumb title="概念" url="http://daiwenli.top/categories/%E6%A6%82%E5%BF%B5/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://daiwenli.top/2018/05/26/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%89/</loc>
-    <lastmod>2019-07-09T08:54:08.611Z</lastmod>
-    <data>
-        <display>
-        <title>《机器学习基石》笔记三</title>
-        <pubTime>2018-05-26T05:58:36.000Z</pubTime>
-        
-        <tag>机器学习，笔记</tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -206,22 +189,17 @@
 
     
   <url>
-    <loc>http://daiwenli.top/2018/05/08/leetcode-021/</loc>
-    <lastmod>2019-07-09T08:54:08.610Z</lastmod>
+    <loc>http://daiwenli.top/2018/05/26/%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%89/</loc>
+    <lastmod>2019-07-09T08:54:08.611Z</lastmod>
     <data>
         <display>
-        <title>leetcode-021</title>
-        <pubTime>2018-05-08T14:21:38.000Z</pubTime>
+        <title>《机器学习基石》笔记三</title>
+        <pubTime>2018-05-26T05:58:36.000Z</pubTime>
         
-        <tag>leetcode</tag>
-         
-        <tag>linked list</tag>
+        <tag>机器学习，笔记</tag>
          
          
            
-             
-              <breadCrumb title="刷题" url="http://daiwenli.top/categories/%E5%88%B7%E9%A2%98/"/>
-          
         </display>
     </data>
     </url>
@@ -250,6 +228,28 @@
 
     
   <url>
+    <loc>http://daiwenli.top/2018/05/08/leetcode-021/</loc>
+    <lastmod>2019-07-09T08:54:08.610Z</lastmod>
+    <data>
+        <display>
+        <title>leetcode-021</title>
+        <pubTime>2018-05-08T14:21:38.000Z</pubTime>
+        
+        <tag>leetcode</tag>
+         
+        <tag>linked list</tag>
+         
+         
+           
+             
+              <breadCrumb title="刷题" url="http://daiwenli.top/categories/%E5%88%B7%E9%A2%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://daiwenli.top/2018/04/24/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2019-07-09T08:54:08.610Z</lastmod>
     <data>
@@ -261,6 +261,26 @@
          
          
            
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://daiwenli.top/2018/08/04/RNN%E4%B8%AD%E7%9A%84%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E7%88%86%E7%82%B8%E5%8E%9F%E5%9B%A0/</loc>
+    <lastmod>2018-08-04T11:38:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>RNN中的梯度消失/爆炸原因</title>
+        <pubTime>2018-08-04T11:38:42.000Z</pubTime>
+        
+        <tag>数学推导</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习" url="http://daiwenli.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+          
         </display>
     </data>
     </url>
