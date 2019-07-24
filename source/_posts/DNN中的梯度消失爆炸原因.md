@@ -1,9 +1,11 @@
+---
 title: DNN中的梯度消失/爆炸原因
 date: 2018-08-03 12:20:32
 updated: 2018-08-03 12:20:32
 tags: [数学推导]
 categories: 深度学习
 mathjax: true
+---
 
 ## DNN中的梯度消失/爆炸原因
 
