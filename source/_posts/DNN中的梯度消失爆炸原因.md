@@ -33,7 +33,7 @@ $\frac{\partial loss}{\partial w_1} = \frac{\partial loss}{\partial f_3}  \frac{
 
 根据上面规律，我们可以把$x$写成$f_0$，当有n-1层隐层时，$f_n$是输出，如果要求$w_l$也就是第$l$层的权重，反向传播中涉及的偏导计算为：
 
-$\frac{\partial loss}{\partial w_l} = \frac{\partial loss}{\partial f_n} \left\{ \prod_{i=l}^{n}\sigma^{'}(w_if_{i-1} + b_i)\prod_{i=l+1}^{n}w_i \right\} f_{l-1}$
+$\frac{\partial loss}{\partial w_l } = \frac{\partial loss }{\partial {f_n} }  \prod_{i=l}^{n}\sigma^{'}(w_if_{i-1} + b_i)\prod_{i=l+1}^{n}w_i  f_{l-1}$
 
 上面这个式子就是我们要推导的核心！
 
