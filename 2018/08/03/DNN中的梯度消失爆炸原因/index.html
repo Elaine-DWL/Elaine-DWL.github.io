@@ -426,7 +426,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  617 字
+                  615 字
                 </span>
               
 
@@ -475,7 +475,7 @@
 <p>$\frac{\partial loss}{\partial w_2} = \frac{\partial loss}{\partial f_3}  \frac{\partial f_3}{\partial f_2} \frac{\partial f_2}{\partial w_2} = \frac{\partial loss}{\partial f_3} \sigma^{‘}(w_3f_2+b_3)w_3 \sigma^{‘}(w_2f_1+b_2)f_1$</p>
 <p>$\frac{\partial loss}{\partial w_1} = \frac{\partial loss}{\partial f_3}  \frac{\partial f_3}{\partial f_2} \frac{\partial f_2}{\partial f_1} \frac{\partial f_1}{\partial w_1} = \frac{\partial loss}{\partial f_3} \sigma^{‘}(w_3f_2+b_3)w_3 \sigma^{‘}(w_2f_1+b_2)w_2 \sigma^{‘}(w_1x+b_1)x$</p>
 <p>根据上面规律，我们可以把$x$写成$f_0$，当有n-1层隐层时，$f_n$是输出，如果要求$w_l$也就是第$l$层的权重，反向传播中涉及的偏导计算为：</p>
-<p>$\frac{\partial loss}{\partial w<em>l} = \frac{\partial loss}{\partial f_n} \left{ \prod</em>{i=l}^{n}\sigma^{‘}(w<em>if</em>{i-1} + b<em>i)\prod</em>{i=l+1}^{n}w<em>i \right} f</em>{l-1}$</p>
+<p>$\frac{\partial loss}{\partial w<em>l } = \frac{\partial loss }{\partial {f_n} }  \prod</em>{i=l}^{n}\sigma^{‘}(w<em>if</em>{i-1} + b<em>i)\prod</em>{i=l+1}^{n}w<em>i  f</em>{l-1}$</p>
 <p>上面这个式子就是我们要推导的核心！</p>
 <p>当梯度反向传播到第$l$层的时候，我们用上述公式计算偏导，根据链式法则，上面用大括号括起来的就是累乘项，其中前半部分是关于激活函数的导数的累乘，后半部分是关于权重值的累乘。我们知道，激活函数比如sigmoid函数，其导数的取值范围是$(0, \frac{1}{4}]$，是恒小于1的，当网络层数很深的时候，多个小于1的数进行累乘，结果是趋向于0的，也就是说此时，梯度反向传播的时候，根据参数更新公式$\theta := \theta - \alpha \cdot \frac{\partial loss}{\theta}$，偏导部分的取值趋于0，那么该参数得不到更新，也就出现了我们说的<strong>梯度消失</strong>现象。</p>
 <p>另外，我们也注意到，大括号的后半部分是关于权重值的累乘，当我们初始化权值很大的时候，多个大于1的数累乘，结果是$+\infty$，此时就出现了<strong>梯度爆炸</strong>现象。</p>
@@ -658,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
