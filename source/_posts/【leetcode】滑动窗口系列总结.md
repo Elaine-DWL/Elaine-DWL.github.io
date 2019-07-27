@@ -32,6 +32,8 @@ Output: "BANC"
 
 mp[ch] 可以理解成，当前区间还需要ch字符的数量
 
+* 代码
+
 ```cpp
 class Solution {
 public:
